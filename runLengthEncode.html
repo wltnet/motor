@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Run length encode" />
+    <title>Run length encode</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <script>
+      function encode(input) {
+        let encoding = "";
+        let prev = input[0];
+        let count = 1;
+
+        for (let i = 1; i < input.length; i++) {
+          if (input[i] != prev) {
+            encoding += count.toString() + prev;
+            count = 1;
+            prev = input[i];
+          } else count++;
+        }
+        encoding += count.toString() + prev;
+        return encoding;
+      }
+
+      const inputArray = [
+        "m",
+        "m",
+        "m",
+        "o",
+        "o",
+        "o",
+        "t",
+        "t",
+        "o",
+        "o",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "w",
+        "w",
+        "a",
+        "y",
+        "y",
+        "y",
+        "y"
+      ];
+
+      const result = encode(inputArray);
+
+      alert(`Input: ${inputArray} \nResult: ${result}`);
+    </script>
+  </body>
+</html>
